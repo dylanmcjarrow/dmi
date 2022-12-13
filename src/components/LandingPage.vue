@@ -28,7 +28,7 @@ color: #c80000;
 .firstName{
   text-align: start;
   font-family: "Work Sans";
-  font-weight: 300;
+  font-weight: 100;
   font-size: 2em;
 }
 
