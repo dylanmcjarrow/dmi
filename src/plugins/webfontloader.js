@@ -9,7 +9,12 @@
 
   webFontLoader.load({
     google: {
-      families: ['Roboto:100,300,400,500,700,900&display=swap'],
+      families: [
+        'Roboto',
+        'Work Sans',
+        'Space Grotesk',
+        'IBM Plex Sans'
+      ],
     },
   })
 }

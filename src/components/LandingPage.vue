@@ -13,6 +13,25 @@
   transition: 200ms;
 }
 
+.surname{
+  display: inline;
+  text-align: start;
+  font-family: "Space Grotesk";
+  font-weight: 700;
+  font-size: 5em;
+}
+
+.surname:hover{
+color: #c80000;
+}
+
+.firstName{
+  text-align: start;
+  font-family: "Work Sans";
+  font-weight: 300;
+  font-size: 2em;
+}
+
 
 
 </style>
@@ -69,7 +88,7 @@
             >
 
               <v-layout>
-                <v-app-bar color="primary">
+                <v-app-bar color="primary" elevation="0">
 
                   <template v-slot:append>
                     <v-btn
@@ -84,7 +103,15 @@
 
                 <v-main>
 
-                  <!---->
+                 <v-container>
+                   <v-row  >
+                     <v-col >
+                       <h1  class="surname" v-for="(letter, index) in name.surname" :key="index"> {{letter}} </h1>
+
+                       <h1 class="firstName" >Dylan Cameron </h1>
+                     </v-col>
+                   </v-row>
+                 </v-container>
 
                 </v-main>
               </v-layout>
@@ -124,6 +151,10 @@ export default {
       {text: 'Audience'},
       {text: 'Conversions'},
     ],
+    name:{
+      firstname:Array.from("Dylan Cameron"),
+      surname:Array.from("McJARROW"),
+    }
   }),
   methods: {
     set_selected_item(index) {
