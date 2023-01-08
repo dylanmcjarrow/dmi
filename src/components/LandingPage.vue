@@ -3,8 +3,9 @@
 
 
 .landing_sheet {
-  border: 2px solid ;
+  border: 2px solid;
   transition: 200ms;
+  background: none;
 }
 
 .landing_sheet:hover {
@@ -21,17 +22,16 @@
   font-size: 5em;
 }
 
-.surname:hover{
-color: #c80000;
+.surname:hover {
+  color: #c80000;
 }
 
-.firstName{
+.firstName {
   text-align: start;
   font-family: "Work Sans";
   font-weight: 100;
   font-size: 2em;
 }
-
 
 
 </style>
@@ -42,11 +42,12 @@ color: #c80000;
 
 
     <v-main>
-      <v-container>
+      <boid_canvas/>
+      <v-container id="content_container">
         <v-row>
           <v-col
-              cols="2"
-              class="d-none d-lg-inline-block"
+            class="d-none d-lg-inline-block"
+            cols="2"
           >
             <v-sheet class="landing_sheet rounded">
               <v-list rounded
@@ -54,13 +55,13 @@ color: #c80000;
               >
 
                 <v-list-item
-                    v-for="(item, i) in items"
-                    :key="i"
-                    :value="item"
-                    :class="{
+                  v-for="(item, i) in items"
+                  :key="i"
+                  :class="{
                       'selected_item': selected_item === i
                     }"
-                    @click="set_selected_item(i)"
+                  :value="item"
+                  @click="set_selected_item(i)"
 
                 >
 
@@ -83,8 +84,8 @@ color: #c80000;
 
           <v-col align-self="center" lg="8" md="10">
             <v-sheet
-                class="landing_sheet rounded"
-                min-height="70vh"
+              class="landing_sheet rounded"
+              min-height="400em"
             >
 
               <v-layout>
@@ -131,11 +132,14 @@ color: #c80000;
 
 <script>
 
-
 import {useTheme} from "vuetify";
+import boid_canvas from "@/components/boid/boid_canvas";
+
 
 export default {
-
+  components: {
+    boid_canvas
+  },
   setup() {
     const theme = useTheme()
 
@@ -144,6 +148,7 @@ export default {
       toggleTheme: () => theme.global.name.value = theme.global.current.value.dark ? 'custom_light' : 'custom_dark'
     }
   },
+
   data: () => ({
     selected_item: 0,
     items: [
@@ -151,12 +156,14 @@ export default {
       {text: 'Audience'},
       {text: 'Conversions'},
     ],
-    name:{
-      firstname:Array.from("Dylan Cameron"),
-      surname:Array.from("McJARROW"),
-    }
+    name: {
+      firstname: Array.from("Dylan Cameron"),
+      surname: Array.from("McJARROW"),
+    },
+
   }),
   methods: {
+
     set_selected_item(index) {
       this.selected_item = index
     },
